@@ -219,3 +219,42 @@ body{
 .install-btn:hover {
   background: #3367d6;
 }
+
+/* --- Quote Demo Section --- */
+.quote-demo {
+  background: var(--card);
+  border: 1px solid #1c2040;
+  border-radius: 18px;
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.quote-demo h2 {
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.quote-box {
+  font-size: 1.2rem;
+  color: var(--text);
+  font-style: italic;
+  max-width: 700px;
+  margin: 0 auto;
+  transition: opacity 1s ease;
+}
+
+#quoteAuthor {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-style: normal;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
