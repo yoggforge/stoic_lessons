@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stoic Lessons — Learn from the Stoics</title>
+  <meta name="description" content="Stoic Lessons helps you understand Stoic philosophy through daily quotes and lessons from Marcus Aurelius, Seneca, and Epictetus." />
+
+  <link rel="icon" href="assets/stoicicon.png">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Sidebar -->
+  <aside class="side-nav">
+    <div class="side-nav__inner">
+      <nav>
+        <ul class="nav-list">
+          <li><a href="https://yoggforge.github.io/yoggforge/" target="_blank" aria-current="page">YogGForge</a></li>
+          <li>
+            <a href="https://chromewebstore.google.com/detail/huemate-color-picker-tool/moleclbjmgchhloknmdbooobjoddkkfi" 
+               target="_blank"
+               title="Visit my other project"
+               class="neon-border">
+               Sister App: Hue.mate
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    <!-- Header -->
+    <header class="header" style="display:flex; align-items:center; justify-content:space-between;">
+      <div class="header-left">
+        <img src="assets/stoiclogo.png" alt="Stoic Lessons Logo" style="max-width: 200px; margin-bottom: 0.5rem;">
+        <p class="tagline">Go beyond quotes — understand the wisdom behind them.</p>
+      </div>
+
+      <!-- Button -->
+      <a href="https://play.google.com/store/apps/details?id=com.yoggforge.stoiclessons"
+         target="_blank"
+         class="install-btn"
+         title="Get Stoic Lessons on Google Play">
+         📱 Get the App
+      </a>
+    </header>
+
+    <!-- About -->
+    <section class="description" aria-labelledby="desc-title">
+      <h2 id="desc-title">About Stoic Lessons</h2>
+      <p>
+        <strong>Stoic Lessons</strong> helps you go beyond just reading Stoic quotes — to truly understand them.
+        Many Stoic sayings use old and complex language. This app offers clear explanations and reflections,
+        helping you connect ancient wisdom to modern life.
+      </p>
+    </section>
+
+    <!-- ✨ Quote Demo Section -->
+    <section class="quote-demo" aria-labelledby="quote-demo-title">
+      <h2 id="quote-demo-title">A Glimpse of Stoic Wisdom</h2>
+      <div class="quote-box">
+        <p id="quoteText">"You have power over your mind – not outside events. Realize this, and you will find strength."</p>
+        <span id="quoteAuthor">— Marcus Aurelius</span>
+      </div>
+    </section>
+
+    <!-- App features -->
+    <section class="features" aria-labelledby="features-title">
+      <h2 id="features-title">Features</h2>
+      <div class="table-wrap">
+        <table class="feature-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Daily Quotes</td>
+              <td>Read Stoic quotes every day from Marcus Aurelius, Seneca, and Epictetus.</td>
+            </tr>
+            <tr>
+              <td>Lessons Explained</td>
+              <td>Understand the deeper meaning of each quote in clear language.</td>
+            </tr>
+            <tr>
+              <td>Favorites</td>
+              <td>Bookmark quotes that inspire you the most.</td>
+            </tr>
+            <tr>
+              <td>Offline Access</td>
+              <td>Read your favorite Stoic lessons anytime, anywhere.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>
+        More from <a href="https://yoggforge.github.io/yoggforge/" target="_blank">YogGForge</a> ·
+        Sister app: <a href="https://chromewebstore.google.com/detail/huemate-color-picker-tool/moleclbjmgchhloknmdbooobjoddkkfi">Hue.mate</a>
+      </p>
+      <p class="smallprint">© <span id="year"></span> Stoic Lessons. All rights reserved.</p>
+    </footer>
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Quote rotation
+    const quotes = [
+      {
+        text: "You have power over your mind – not outside events. Realize this, and you will find strength.",
+        author: "Marcus Aurelius"
+      },
+      {
+        text: "We suffer more often in imagination than in reality.",
+        author: "Seneca"
+      },
+      {
+        text: "It's not what happens to you, but how you react to it that matters.",
+        author: "Epictetus"
+      }
+    ];
+
+    let index = 0;
+    const quoteText = document.getElementById("quoteText");
+    const quoteAuthor = document.getElementById("quoteAuthor");
+
+    function fadeQuotes() {
+      quoteText.classList.add("fade-out");
+      quoteAuthor.classList.add("fade-out");
+      
+      setTimeout(() => {
+        index = (index + 1) % quotes.length;
+        quoteText.textContent = `"${quotes[index].text}"`;
+        quoteAuthor.textContent = `— ${quotes[index].author}`;
+        quoteText.classList.remove("fade-out");
+        quoteAuthor.classList.remove("fade-out");
+      }, 1000);
+    }
+
+    setInterval(fadeQuotes, 5000);
+  </script>
+</body>
+</html>
