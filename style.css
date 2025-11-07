@@ -1,0 +1,221 @@
+:root{
+  --bg: #0f1221;
+  --card: #171a2b;
+  --text: #e9ecf8;
+  --muted: #b8bdd6;
+  --accent: #7aa2ff;
+  --table-border: #2a2f49;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+}
+
+*{ box-sizing: border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  background: radial-gradient(1200px 600px at 60% -10%, rgba(122,162,255,.12), transparent 60%), var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Sidebar (left margin with links) */
+.side-nav{
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 240px;
+  padding: 24px 16px;
+  background: linear-gradient(180deg, #0e1120 0%, #0b0e1a 100%);
+  border-right: 1px solid #11142a;
+}
+.side-nav__inner{
+  position: sticky;
+  top: 24px;
+}
+.nav-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+.nav-list a{
+  display: block;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  background: #14182a;
+  border: 1px solid #161a2f;
+  box-shadow: var(--shadow);
+}
+.nav-list a[aria-current="page"]{
+  outline: 2px solid var(--accent);
+}
+
+/* Main content layout */
+.content{
+  margin-left: 260px; /* space for sidebar */
+  padding: 36px 24px 80px;
+  max-width: 1100px;
+}
+
+/* Header */
+.header{
+  margin-bottom: 18px;
+}
+.app-name{
+  margin: 0 0 6px;
+  font-size: clamp(28px, 4vw, 48px);
+  letter-spacing: 0.3px;
+}
+.tagline{
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+/* Hero image */
+.hero{
+  margin: 22px 0 28px;
+  background: var(--card);
+  border: 1px solid #1c2040;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.hero__image{
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Sections */
+.description, .features{
+  background: var(--card);
+  border: 1px solid #1c2040;
+  padding: 22px;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.description h2, .features h2{
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1.4rem;
+}
+
+/* Table */
+.table-wrap{
+  overflow: auto;
+  border-radius: 12px;
+}
+.feature-table{
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 520px;
+}
+.feature-table th, .feature-table td{
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--table-border);
+}
+.feature-table thead th{
+  background: #1a1e36;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.feature-table tbody tr:hover{
+  background: #141a31;
+}
+
+/* Footer */
+.footer{
+  text-align: center;
+  color: var(--muted);
+  margin-top: 22px;
+}
+.footer a{ color: var(--accent); text-decoration: none; }
+.smallprint{ opacity: .8; font-size: .9rem; }
+
+/* Responsive */
+@media (max-width: 900px){
+  .side-nav{ width: 200px; }
+  .content{ margin-left: 220px; }
+}
+@media (max-width: 720px){
+  .side-nav{
+    position: static;
+    width: 100%;
+    border-right: 0;
+    border-bottom: 1px solid #11142a;
+  }
+  .content{ margin-left: 0; padding-top: 20px; }
+}
+
+/* effect */
+.neon-border {
+  position: relative;
+  display: inline-block;
+  padding: 6px 12px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  background: #111; /* dark base for contrast */
+  overflow: hidden;
+}
+
+/* Moving neon border */
+.neon-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(90deg, 
+    #ff00ff, #00ffff, #ff00ff, #ffff00, #ff0000, #00ff00, #0000ff, #ff00ff);
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: neonFlow 6s linear infinite;
+}
+
+/* Blur for glow effect */
+.neon-border::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  background: inherit;
+  border-radius: inherit;
+  filter: blur(10px);
+  z-index: -2;
+  animation: neonFlow 6s linear infinite;
+}
+
+@keyframes neonFlow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.install-btn {
+  display: flex;
+  align-items: center;
+  background: #4285f4; /* Google Chrome blue */
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.install-btn:hover {
+  background: #3367d6;
+}
